@@ -1,18 +1,28 @@
 package mpi.wowmarket.model;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Entity
 public class RecipeItem {
-    int id;
-    Recipe recipe;
-    Item item;
-    int itemsRequired;
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "recipe_id")
+    private Recipe recipe;
+
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
+
+    @Column
+    private int itemsRequired;
 }

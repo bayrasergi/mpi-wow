@@ -1,17 +1,23 @@
 package mpi.wowmarket.model;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Entity
 public class Profession {
-    int id;
-    int name;
-    boolean craft;
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @Column
+    private int name;
+
+    @Column
+    private boolean craft;
 }
